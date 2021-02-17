@@ -21,7 +21,10 @@ func collectMetrics(config Config) *prometheus.Registry {
 
 	for name, configItem := range config {
 		restic := Restic{Name: name, Repository: configItem.Repository, Password: configItem.Password}
-		timestamp, _ := restic.SnapshotTimestamp()
+		timestamp, err := restic.SnapshotTimestamp()
+		if err != nil {
+			log.Printf("[%s] <ERR> %s", name, err)
+		}
 		snapshot.WithLabelValues(name).Set(float64(timestamp))
 	}
 
