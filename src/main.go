@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	config = flag.String("config", "restic-exporter.yaml", "Name of the config file to use")
-	output = flag.String("output", "stats.txt", "File to export the stats to")
+	config       = flag.String("config", "restic-exporter.yaml", "Name of the config file to use")
+	output       = flag.String("output", "stats.txt", "File to export the stats to")
 	resticBinary = flag.String("restic-bin", "restic", "Location of the restic binary to use (defaults to loading the one in your PATH)")
 )
 
