@@ -21,7 +21,13 @@ func collectMetrics(config Config) *prometheus.Registry {
 	registry.Register(snapshot)
 
 	for name, configItem := range config {
-		restic := Restic{Binary: *resticBinary, Name: name, Repository: configItem.Repository, Password: configItem.Password}
+		restic := Restic{
+			Binary:     *resticBinary,
+			Name:       name,
+			Repository: configItem.Repository,
+			Password:   configItem.Password,
+			Env:        configItem.Env,
+		}
 		timestamp, err := restic.SnapshotTimestamp()
 		if err != nil {
 			log.Printf("[%s] <ERR> %s", name, err)

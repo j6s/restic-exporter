@@ -23,6 +23,8 @@ Next, create a configuration file for `restic-exporter`:
 'arbitrary-name-here':
     repository: '/path/to/repo/here'
     password: 'passwordToRepoGOesHere'
+    env:
+        FOO: 'bar'
 ```
 
 Now, you can let `restic-exporter` generate a `.prom` file which in turn is picked

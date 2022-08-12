@@ -10,6 +10,7 @@ import (
 type ConfigItem struct {
 	Repository string
 	Password   string
+	Env        map[string]string
 }
 
 type Config map[string]ConfigItem
